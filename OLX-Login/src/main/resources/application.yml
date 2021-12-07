@@ -1,22 +1,14 @@
 server:
   port: 9000
   
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
 spring:
   application:    name: auth-service
-  datasource:
-    url: jdbc:mysql://localhost:3306/olx-users
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    username: Aasif
-    password: #Aa@320931
-  jpa:
-    hibernate.ddl-auto: update
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.MySQL8Dialect
-        
-  zipkin:
-    base-url: http://localhost:9411
-     
+  config:    import: configserver:http://localhost:8888       
 eureka:
   client:
     register-with-eureka: true
